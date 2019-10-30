@@ -22,10 +22,12 @@ def main():
         libtcod.sys_check_for_event(libtcod.EVENT_KEY_PRESS, key, mouse)
         libtcod.console_set_default_foreground(con, libtcod.white)
 
+        libtcod.console_put_char(con, playX, playY, '@', libtcod.BKGND_NONE)
         libtcod.console_blit(con,0,0,pantalla_ancho, pantalla_alto, 0 ,0 ,0)
+
         libtcod.console_flush()
 
-        libtcod.console_put_char(con, playX, playY, '@', libtcod.BKGND_NONE)
+        libtcod.console_put_char(con, playX, playY, ' ', libtcod.BKGND_NONE)
 
         action = key_handler(key)
         move = action.get('move')
