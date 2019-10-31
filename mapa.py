@@ -1,5 +1,6 @@
 
 from casilla import Casilla
+from rectangulo import Rectangulo
 
 class Mapa:
     def __init__(self, ancho, alto):
@@ -11,6 +12,19 @@ class Mapa:
         casillas = [[Casilla(True) for y in range(self.alto)] for x in range(self.ancho)]
 
         return casillas
+
+    def crea_mapa(self):
+        cuarto1 = Rectangulo(20, 15, 10, 15)
+        cuarto2 = Rectangulo(35, 15, 10, 15)
+
+        self.crea_cuarto(cuarto1)
+        self.crea_cuarto(cuarto2)
+
+    def crea_cuarto(self, cuarto):
+        for y in range(cuarto.y1 + 1, cuarto.y2):
+            for x in range(cuarto.x1 + 1, cuarto.x2):
+                self.casillas[x][y].bloqueado = False;
+                self.casillas[x][y].vision = False;
 
     def estaBloqueado(self,x,y):
         if self.casillas[x][y].bloqueado:

@@ -31,6 +31,7 @@ def main():
     con = libtcod.console_new(pantalla_ancho, pantalla_alto)
 
     mapa_juego = Mapa(mapa_ancho, mapa_alto)
+    mapa_juego.crea_mapa()
 
     key = libtcod.Key()
     mouse = libtcod.Mouse()
