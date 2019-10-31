@@ -20,6 +20,7 @@ class Mapa:
         n_cuartos = 0
 
         for r in range(max_cuartos):
+
             # Tamaños aleatorios
             an = randint(cuar_tam_min, cuar_tam_max)
             al = randint(cuar_tam_min, cuar_tam_max)
@@ -27,33 +28,33 @@ class Mapa:
             x = randint(0, mapa_ancho - an - 1)
             y = randint(0, mapa_alto - al - 1)
 
-            nuevo_cuarto = Rectangulo(x,y,an,al)
+            nuevo_cuarto = Rectangulo(x, y, an, al)
+
             for otro_cuarto in cuartos:
                 if nuevo_cuarto.intersecta(otro_cuarto):
-                    break;
+                    break
+            else:
+                self.crea_cuarto(nuevo_cuarto)
 
+                (nuevo_x, nuevo_y) = nuevo_cuarto.centro()
+
+                if n_cuartos == 0:
+                    player.x = nuevo_x
+                    player.y = nuevo_y
                 else:
-                    self.crea_cuarto(nuevo_cuarto)
+                    (ant_x, ant_y) = cuartos[n_cuartos - 1].centro()
 
-                    (nuevo_x, nuevo_y) = nuevo_cuarto.centro()
+                    if randint(0,1) == 1:
+                        # Primero horizontal y luego vertical
+                        self.crea_tunel_h(ant_x, nuevo_x, ant_y)
+                        self.crea_tunel_v(ant_y, nuevo_y, nuevo_x)
 
-                    if n_cuartos == 0:
-                        player.x = nuevo_x
-                        player.y = nuevo_y
-                    else:
-                        (ant_x, ant_y) = cuartos[n_cuartos - 1].centro()
+                    else: # Primero vertical y luego horizontal
+                        self.crea_tunel_v(ant_y, nuevo_y, nuevo_x)
+                        self.crea_tunel_h(ant_x, nuevo_x, ant_y)
 
-                        if randint(0,1) == 1:
-                            # Primero horizontal y luego vertical
-                            self.crea_tunel_h(ant_x, nuevo_x, ant_y)
-                            self.crea_tunel_v(ant_y, nuevo_y, nuevo_x)
-
-                        else: # Primero vertical y luego horizontal
-                            self.crea_tunel_v(ant_y, nuevo_y, nuevo_x)
-                            self.crea_tunel_h(ant_x, nuevo_x, ant_y)
-
-                    cuartos.append(nuevo_cuarto)
-                    n_cuartos += 1
+                cuartos.append(nuevo_cuarto)
+                n_cuartos += 1
 
 
     def crea_tunel_h(self, x1, x2, y):

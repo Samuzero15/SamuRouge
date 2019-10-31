@@ -13,4 +13,5 @@ class Rectangulo:
 
     def intersecta(self, otro):
         # retorna True si intersecta con otro rectangulo
-        return (self.x1 <= otro.x2 and self.x2 >= otro.x1) and (self.y1 <= otro.y2 and self.y2 >= otro.y1)
+        return (self.x1 <= otro.x2 and self.x2 >= otro.x1 and
+                self.y1 <= otro.y2 and self.y2 >= otro.y1)
