@@ -20,6 +20,16 @@ class Mapa:
         self.crea_cuarto(cuarto1)
         self.crea_cuarto(cuarto2)
 
+    def crea_tunel_h(self, x1, x2, y):
+        for x in range(min(x1, x2),max(x1, x2)+ 1):
+            self.casillas[x][y].bloqueado = False;
+            self.casillas[x][y].vision = False;
+
+    def crea_tunel_v(self, y1, y2, x):
+        for y in range(min(y1, y2), max(y1, y2) + 1):
+            self.casillas[x][y].bloqueado = False;
+            self.casillas[x][y].vision = False;
+
     def crea_cuarto(self, cuarto):
         for y in range(cuarto.y1 + 1, cuarto.y2):
             for x in range(cuarto.x1 + 1, cuarto.x2):
