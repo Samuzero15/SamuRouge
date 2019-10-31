@@ -14,6 +14,9 @@ def main():
 
     mapa_ancho = pantalla_ancho
     mapa_alto = 45
+    cuarto_tam_min = 6
+    cuarto_tam_max = 10
+    max_cuartos = 30
 
     colores = {
         'pared_oscura': libtcod.Color(0,0,100),
@@ -31,7 +34,7 @@ def main():
     con = libtcod.console_new(pantalla_ancho, pantalla_alto)
 
     mapa_juego = Mapa(mapa_ancho, mapa_alto)
-    mapa_juego.crea_mapa()
+    mapa_juego.crea_mapa(max_cuartos, cuarto_tam_min, cuarto_tam_max, mapa_ancho, mapa_alto, player)
 
     key = libtcod.Key()
     mouse = libtcod.Mouse()
