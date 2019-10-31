@@ -18,6 +18,7 @@ class Mapa:
         cuarto2 = Rectangulo(35, 15, 10, 15)
 
         self.crea_cuarto(cuarto1)
+        self.crea_tunel_h(25, 40, 23)
         self.crea_cuarto(cuarto2)
 
     def crea_tunel_h(self, x1, x2, y):
