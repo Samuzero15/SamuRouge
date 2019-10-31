@@ -8,14 +8,7 @@ class Mapa:
         self.casillas = self.genera_casillas()
 
     def genera_casillas(self):
-        casillas = [[Casilla(False) for y in range(self.alto)] for x in range(self.ancho)]
-
-        casillas[30][22].bloqueado = True;
-        casillas[30][22].vision = True;
-        casillas[31][22].bloqueado = True;
-        casillas[31][22].vision = True;
-        casillas[32][22].bloqueado = True;
-        casillas[32][22].vision = True;
+        casillas = [[Casilla(True) for y in range(self.alto)] for x in range(self.ancho)]
 
         return casillas
 
